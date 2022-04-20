@@ -5,21 +5,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using WebApplication2.models;
 
 namespace WebApplication2.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        public List<Users> Users { get; set; }
+     
+        private readonly UserContext _context;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(UserContext db)
         {
-            _logger = logger;
+            _context = db;
         }
-
         public void OnGet()
         {
-
+            Users = _context.User.AsNoTracking().ToList();
         }
     }
 }

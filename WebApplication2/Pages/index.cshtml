@@ -4,7 +4,10 @@
     ViewData["Title"] = "Home page";
 }
 <link rel="stylesheet" href="~/css/StyleforChat.css" />
-
+@foreach (var person in Model.Users)
+{
+    <tr><td>@person.Name</td><td>@person.Surname</td></tr>
+}
 <div class="container">
     <div class="row clearfix">
         <div class="col-lg-12">
